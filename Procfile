@@ -1,1 +1,1 @@
-web: gunicorn Minimarket.wsgi 
+web: gunicorn pruebaPQRs.wsgi 
