@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-e7-$u)xg#ak9g^3hnu*387$+_!d40t++!(!roit__eg&q^860n
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["proyectopqr.herokuapp.com"]
+ALLOWED_HOSTS = [""]
 
 MESSAGE_STORAGE = "django.contrib.messages.storage.cookie.CookieStorage"
 
@@ -83,12 +83,17 @@ WSGI_APPLICATION = 'pruebaPQRs.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'OPTIONS': {
-            'read_default_file': '/etc/mysql/my.cnf',
-        },
-    }
+        'default': {
+            'ENGINE': 'djongo',
+            'NAME': 'pruebaPQR',
+            'ENFORCE_SCHEMA': False,
+            'CLIENT': {
+                'host': 'mongodb+srv://pruebaPQR:pruebaPQR2021.@cluster0.1xzrx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+                'USERNAME':'pruebaPQR',
+                'PASSWORD':'pruebaPQR2021.',
+                'authMechanism': 'SCRAM-SHA-1' 
+            },
+        }
 }
 
 
