@@ -1,0 +1,63 @@
+{% extends './plantilla.html' %} 
+
+{% block titulo %} Gestion Peticiones {% endblock titulo %} 
+
+{% block body %} 
+
+<div>
+    <a class="btn btn-primary" href="/crearPeticion" role="button">Crear Peticion</a>
+</div>
+
+<div>
+    <div class="table-responsive py-2">
+        <h1>Listado de Peticiones</h1>
+        <table class="table table responsive">
+            <thead>
+                <tr>
+                    <th>Id Usuario</th>
+                    <th>Numero Radicado</th>
+                    <th>Fecha Creacion</th>
+                    <th>Respuesta Administrativa</th>
+                    <th>Fecha Respuesta</th>
+                    <th>Agrado</th>
+                    <th>Reclamo</th>
+                    <th colspan="3">Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for p in peticiones %}
+                    <tr>
+                        <td>{{ p.id_usuario }}</td>
+                        <td>{{ p.num_radicado }}</td>
+                        <td>{{ p.fecha_creacion }}</td>
+                        {% if p.respuesta_admin == True %}
+                            <td>SI</td>
+                            <td>{{ p.fecha_respuesta }}</td>
+                        {% else %}
+                            <td>NO</td>
+                            <td> -- </td>
+                        {% endif %} 
+                        {% if p.usuario_agrado == True %}
+                            <td><a class="btn btn-info">SI</a></td>
+                        {% else %}
+                            <td><a href="/agradoUsuarioP/{{ p.num_radicado }}" class="btn btn-danger">No</a></td>
+                        {% endif %} 
+                        {% if p.hay_reclamo == True %}
+                            <td>SI</td>
+                            <td><a class="btn btn-info">Reclamo</a>
+                        {% else %}
+                            <td>NO</td>
+                            <td><a href="/hacerReclamoP/{{ p.num_radicado }}" class="btn btn-danger">Reclamo</a>
+                        {% endif %}
+                        <a href="/verPeticion/{{ p.num_radicado }}" class="btn btn-info">Ver</a></td>
+                        <td><a href="/eliminarPeticion/{{ p.num_radicado }}" class="btn btn-danger">Eliminar</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<h1>Estamos en Gestion de Peticiones</h1>
+
+{% endblock body %}

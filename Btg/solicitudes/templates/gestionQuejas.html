@@ -1,0 +1,63 @@
+{% extends './plantilla.html' %}  
+
+{% block titulo %} Gestion Quejas {% endblock titulo %} 
+
+{% block body %}
+
+<div>
+    <a class="btn btn-primary" href="/crearQueja" role="button">Crear Queja</a>
+</div>
+
+<div>
+    <div class="table-responsive py-2">
+        <h1>Listado de Quejas</h1>
+        <table class="table table responsive">
+            <thead>
+                <tr>
+                    <th>Id Usuario</th>
+                    <th>Numero Radicado</th>
+                    <th>Fecha Creacion</th>
+                    <th>Respuesta Administrativa</th>
+                    <th>Fecha Respuesta</th>
+                    <th>Agrado</th>
+                    <th>Reclamo</th>
+                    <th colspan="3">Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for q in quejas %}
+                    <tr>
+                        <td>{{ q.id_usuario }}</td>
+                        <td>{{ q.num_radicado }}</td>
+                        <td>{{ q.fecha_creacion }}</td>
+                        {% if q.respuesta_admin == True %}
+                            <td>SI</td>
+                            <td>{{ q.fecha_respuesta }}</td>
+                        {% else %}
+                            <td>NO</td>
+                            <td> -- </td>
+                        {% endif %} 
+                        {% if q.usuario_agrado == True %}
+                            <td><a class="btn btn-info">SI</a></td>
+                        {% else %}
+                            <td><a href="/agradoUsuarioQ/{{ q.num_radicado }}" class="btn btn-danger">No</a></td>
+                        {% endif %} 
+                        {% if q.hay_reclamo == True %}
+                            <td>SI</td>
+                            <td><a class="btn btn-info">Reclamo</a>
+                        {% else %}
+                            <td>NO</td>
+                            <td><a href="/hacerReclamoQ/{{ q.num_radicado }}" class="btn btn-danger">Reclamo</a>
+                        {% endif %}
+                        <a href="/verQueja/{{ q.num_radicado }}" class="btn btn-info">Ver</a></td>
+                        <td><a href="/eliminarQueja/{{ q.num_radicado }}" class="btn btn-danger">Eliminar</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<h1>Estamos en Gestion de Quejas</h1>
+
+{% endblock body %}

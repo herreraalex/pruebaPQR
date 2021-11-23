@@ -1,0 +1,26 @@
+ {% extends './plantilla.html' %}
+
+{% block titulo %} Crear Reclamo peticion{% endblock titulo %} 
+
+{% block body %}
+
+<div class="card">
+    <div class="card-body">
+        <form action="/registrarReclamoP/" method="POST"> {% csrf_token %}
+            <div class="form-group">
+                <input type="text" id="num_peticion" name="num_peticion" class="form-control"   value="{{ peticion.num_radicado }}" readonly required>
+            </div>
+            <div class="form-group">
+                <input type="text" id="descripcion" name="descripcion" class="form-control" maxlength="200" required>
+            </div>
+            <div class="form-group py-2">
+                <button type="submit" class="btn btn-success btn-block text-white"> Guardar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<h1>Estamos en Crear Reclamo para Peticion</h1>
+
+{% endblock body %}

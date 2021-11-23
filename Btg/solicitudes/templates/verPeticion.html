@@ -1,0 +1,22 @@
+{% extends './plantilla.html' %}
+
+{% block titulo %} Ver Peticion {% endblock titulo %} 
+
+{% block body %}
+
+<div class="card border-success mb-3" style="max-width: 18rem;">
+    <div class="card-header">Peticion</div> 
+    <div class="card-body text-success">
+        <h5 class="card-title">Peticion</h5>
+        <p class="card-text">Numero Radicado: {{ peticion.num_radicado }} </p>
+        <p class="card-text">Descripcion: {{ peticion.descripcion }} </p>
+        <p class="card-text">Fecha de Creacion: {{ peticion.fecha_creacion }} </p>
+        <p class="card-text">respuesta administrativa: {{ peticion.desc_respuesta }} </p>
+        <p class="card-text">Fecha respuesta administrativa: {{ peticion.fecha_respuesta }} </p>
+        <p class="card-text">Es del agrado del usuario?: {{ peticion.usuario_agrado }} </p>
+        <p class="card-text">Existe reclamo?: {{ peticion.hay_reclamo }} </p>
+        <p class="card-text">Descripcion Reclamo: {{ reclamo.descripcion }}</p>
+        <p class="card-text">{{ reclamo.fecha_creacion }} </p>
+    </div>
+</div>
+{% endblock body %}
