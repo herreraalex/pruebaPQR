@@ -1,0 +1,19 @@
+{% extends './plantilla.html' %} {% block titulo %} Ver Queja {% endblock titulo %} {% block body %}
+
+<div class="card border-info mb-3" style="max-width: 18rem;">
+    <div class="card-header">Queja</div>
+    <div class="card-body text-info">
+        <h5 class="card-title">Queja</h5>
+        <p class="card-text">Numero Radicado: {{ queja.num_radicado }} </p>
+        <p class="card-text">Descripcion: {{ queja.descripcion }} </p>
+        <p class="card-text">Fecha de Creacion: {{ queja.fecha_creacion }} </p>
+        <p class="card-text">respuesta administrativa: {{ queja.desc_respuesta }} </p>
+        <p class="card-text">Fecha respuesta administrativa: {{ queja.fecha_respuesta }} </p>
+        <p class="card-text">Es del agrado del usuario?: {{ queja.usuario_agrado }} </p>
+        <p class="card-text">Existe reclamo?: {{ queja.hay_reclamo }} </p>
+        <p class="card-text">Descripcion Reclamo: {{ reclamo.descripcion }}</p>
+        <p class="card-text">{{ reclamo.fecha_creacion }} </p>
+    </div>
+</div>
+
+{% endblock body %}
