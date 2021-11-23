@@ -83,17 +83,12 @@ WSGI_APPLICATION = 'pruebaPQRs.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-        'default': {
-            'ENGINE': 'djongo',
-            'NAME': 'pruebaPQR',
-            'ENFORCE_SCHEMA': False,
-            'CLIENT': {
-                'host': 'mongodb+srv://pruebaPQR:pruebaPQR2021.@cluster0.1xzrx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
-                'USERNAME':'pruebaPQR',
-                'PASSWORD':'pruebaPQR2021.',
-                'authMechanism': 'SCRAM-SHA-1' 
-            },
-        }
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'OPTIONS': {
+            'read_default_file': '/etc/mysql/my.cnf',
+        },
+    }
 }
 
 
