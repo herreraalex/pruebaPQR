@@ -1,1 +1,1 @@
-web: gunicorn pruebaPQRs.wsgi 
+web: gunicorn pruebaPQR.wsgi 
